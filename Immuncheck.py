@@ -4,6 +4,18 @@ import pandas as pd
 # Titel der App
 st.title('Agbi-Immuncheck - Digitaler Impfpass')
 
+# Hintergrund mit Farbverlauf einfügen
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: linear-gradient(135deg, #3498db, #85C1E9);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Datenframe für Impfdaten erstellen oder laden, falls vorhanden
 @st.cache
 def load_data():
@@ -23,6 +35,11 @@ elif category == 'Symptome':
 elif category == 'Schweizerischer Impfplan':
     st.header('Schweizerischer Impfplan')
     # Hier können Sie den schweizerischen Impfplan anzeigen
+
+# Benutzeroberfläche für Anzeigen von Impfdaten
+st.header('Gespeicherte Daten')
+st.dataframe(data)
+
 
 
 
