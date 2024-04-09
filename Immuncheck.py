@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 # Titel der App
-st.title('Agbi-Immuncheck - Digitaler Impfpass')
+st.title('AgBi-Immuncheck - Digitaler Impfpass')
 
 # Datenframe für Impfdaten erstellen oder laden, falls vorhanden
 @st.cache
