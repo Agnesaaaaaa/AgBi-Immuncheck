@@ -1,17 +1,9 @@
 import streamlit as st
 import pandas as pd
 
-# Setzen der Hintergrundfarbe
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #85C1E9;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# Setzen der Streamlit-Themeneinstellungen
+st.set_page_config(layout="wide", page_title="Agbi-Immuncheck - Digitaler Impfpass", page_icon=":syringe:", 
+                    initial_sidebar_state="expanded")
 
 # Titel der App
 st.title('Agbi-Immuncheck - Digitaler Impfpass')
@@ -39,6 +31,7 @@ elif category == 'Schweizerischer Impfplan':
 # Benutzeroberfläche für Anzeigen von Impfdaten
 st.header('Gespeicherte Daten')
 st.dataframe(data)
+
 
 
 
