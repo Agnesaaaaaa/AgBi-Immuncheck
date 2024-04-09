@@ -12,9 +12,8 @@ def load_data():
 data = load_data()
 
 # Benutzeroberfläche für Hinzufügen von Impfdaten
-st.header('Impfdaten hinzufügen')
-
-category = st.selectbox('Kategorie wählen', ['Meine Impfungen', 'Symptome', 'Schweizerischer Impfplan'])
+st.sidebar.title('Kategorien')
+category = st.sidebar.selectbox('Kategorie wählen', ['Meine Impfungen', 'Symptome', 'Schweizerischer Impfplan'])
 date_of_event = st.date_input('Datum', value=pd.Timestamp.today())
 information = st.text_input('Information')
 
@@ -25,4 +24,5 @@ if st.button('Eintrag hinzufügen'):
 # Benutzeroberfläche für Anzeigen von Impfdaten
 st.header('Gespeicherte Daten')
 st.dataframe(data)
+
 
