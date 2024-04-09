@@ -6,18 +6,6 @@ st.markdown(
     """
     <style>
     body {
-        background-color: #3498db;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Setzen der Farbe für die Sidebar
-st.markdown(
-    """
-    <style>
-    .sidebar .sidebar-content {
         background-color: #85C1E9;
     }
     </style>
@@ -51,6 +39,7 @@ elif category == 'Schweizerischer Impfplan':
 # Benutzeroberfläche für Anzeigen von Impfdaten
 st.header('Gespeicherte Daten')
 st.dataframe(data)
+
 
 
 
