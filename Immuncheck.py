@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Titel der App
-st.title('Agbi-Immuncheck - Digitaler Impfpass')
-
 # Setzen der Hintergrundfarbe
 st.markdown(
     """
@@ -28,6 +25,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Titel der App
+st.title('Agbi-Immuncheck - Digitaler Impfpass')
+
 # Datenframe für Impfdaten erstellen oder laden, falls vorhanden
 @st.cache
 def load_data():
@@ -51,6 +51,7 @@ elif category == 'Schweizerischer Impfplan':
 # Benutzeroberfläche für Anzeigen von Impfdaten
 st.header('Gespeicherte Daten')
 st.dataframe(data)
+
 
 
 
