@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-import streamlit as st
-import pandas as pd
-
 # Titel der App
 st.title('Agbi-Immuncheck - Digitaler Impfpass')
 
@@ -20,9 +17,11 @@ date_of_vaccination = st.date_input('Datum der Impfung', value=pd.Timestamp.toda
 vaccine_type = st.text_input('Impfstoff')
 
 if st.button('Impfdaten hinzufügen'):
+    date_of_vaccination = pd.Timestamp(date_of_vaccination)  # Datum in Pandas Timestamp-Objekt umwandeln
     data = data.append({'Datum der Impfung': date_of_vaccination, 'Impfstoff': vaccine_type}, ignore_index=True)
     st.success('Impfdaten erfolgreich hinzugefügt!')
 
 # Benutzeroberfläche für Anzeigen von Impfdaten
 st.header('Gespeicherte Impfdaten')
 st.dataframe(data)
+
