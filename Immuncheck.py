@@ -24,9 +24,6 @@ elif category == 'Schweizerischer Impfplan':
     st.header('Schweizerischer Impfplan')
     # Hier können Sie den schweizerischen Impfplan anzeigen
 
-# Benutzeroberfläche für Anzeigen von Impfdaten
-st.header('Gespeicherte Daten')
-st.dataframe(data)
 
 
 
