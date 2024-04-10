@@ -45,6 +45,7 @@ def main_bg():
         <style>
         .stApp {
             background-color: #f2f7ff !important;
+            color: black;
         }
         </style>
         """,
@@ -59,6 +60,7 @@ def sidebar_bg():
         <style>
         [data-testid="stSidebar"] {
             background-color: white !important;
+            color: black;
         }
         </style>
         """,
@@ -66,4 +68,5 @@ def sidebar_bg():
     )
 
 sidebar_bg()
+
 
