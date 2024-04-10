@@ -48,6 +48,21 @@ def sidebar_bg():
 
 sidebar_bg()
 
+import streamlit as st
+
+def main_bg():
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #f2f7ff;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+main_bg()
 
 
 
