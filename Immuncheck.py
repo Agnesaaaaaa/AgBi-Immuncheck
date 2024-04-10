@@ -6,6 +6,14 @@ st.set_page_config(layout="wide", page_title="Agbi-Immuncheck - Digitaler Impfpa
                     initial_sidebar_state="expanded")
 
 # Titel der App
+st.markdown("""
+    <style>
+        .css-17eq0hr {
+            color: black;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title('Agbi-Immuncheck - Digitaler Impfpass')
 
 # Datenframe für Impfdaten erstellen oder laden, falls vorhanden
@@ -68,5 +76,4 @@ def sidebar_bg():
     )
 
 sidebar_bg()
-
 
