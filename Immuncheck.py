@@ -21,9 +21,16 @@ category = st.sidebar.selectbox('Kategorie wählen', ['Meine Impfungen', 'Sympto
 if category == 'Meine Impfungen':
     st.header('Meine Impfungen')
     # Hier können Sie die Benutzeroberfläche für Impfungen anzeigen und verwalten
+    date = st.date_input('Datum der Impfung')
+    info = st.text_input('Informationen zur Impfung')
+    if st.button('Impfung hinzufügen'):
+        data = data.append({'Kategorie': category, 'Datum': date, 'Information': info}, ignore_index=True)
+        st.success('Impfung erfolgreich hinzugefügt!')
+
 elif category == 'Symptome':
     st.header('Symptome')
     # Hier können Sie die Benutzeroberfläche für Symptome anzeigen und verwalten
+
 elif category == 'Schweizerischer Impfplan':
     st.header('Schweizerischer Impfplan')
     # Hier können Sie den schweizerischen Impfplan anzeigen
@@ -32,14 +39,12 @@ elif category == 'Schweizerischer Impfplan':
 st.header('Gespeicherte Daten')
 st.dataframe(data)
 
-
-
 def main_bg():
     st.markdown(
         """
         <style>
         .stApp {
-            background-color: #89CFF0 !important;
+            background-color: #f2f7ff !important;
         }
         </style>
         """,
@@ -47,7 +52,6 @@ def main_bg():
     )
 
 main_bg()
-
 
 def sidebar_bg():
     st.markdown(
@@ -62,5 +66,4 @@ def sidebar_bg():
     )
 
 sidebar_bg()
-
 
