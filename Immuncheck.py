@@ -32,21 +32,7 @@ elif category == 'Schweizerischer Impfplan':
 st.header('Gespeicherte Daten')
 st.dataframe(data)
 
-import streamlit as st
 
-def sidebar_bg():
-    st.markdown(
-        """
-        <style>
-        [data-testid="stSidebar"] > div:first-child {
-            background: linear-gradient(to bottom, #4d88ff, #0066cc);
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-sidebar_bg()
 
 def main_bg():
     st.markdown(
@@ -62,5 +48,19 @@ def main_bg():
 
 main_bg()
 
+
+def sidebar_bg():
+    st.markdown(
+        """
+        <style>
+        [data-testid="stSidebar"] {
+            background-color: white !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+sidebar_bg()
 
 
