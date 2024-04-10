@@ -48,8 +48,8 @@ def sidebar_bg(side_bg):
       unsafe_allow_html=True,
       )
 
-
-
+side_bg = 'path_to_local_image'
+sidebar_bg(side_bg)
 
 
 
