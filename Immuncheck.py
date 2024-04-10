@@ -72,3 +72,8 @@ def sidebar_bg():
     )
 
 sidebar_bg()
+try:
+    if st.button('Impfung hinzufügen'):
+        data = data.append({'Kategorie': category, 'Datum': date, 'Information': info}, ignore_index=True)
+        st.success('
+
