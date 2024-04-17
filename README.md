@@ -9,4 +9,4 @@ Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Inf
 <img src="persona.png" alt="persona" style="width:200px;"/>
 
 ## Wireframes
-<img src="Wireframe-Nutzertest.pdf" alt="wireframes" style="width:200px;"/>
+<img src="wf_usertest.png" alt="wireframes" style="width:200px;"/>
