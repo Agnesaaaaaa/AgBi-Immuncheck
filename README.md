@@ -6,9 +6,9 @@ Benutzer können ihre Impfungen in der App erfassen, einschließlich des Impfsto
 Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Informationen wie Name, Geburtsdatum und medizinische Vorgeschichte zu speichern. Dies ermöglicht eine individuelle Anpassung der Impf- und Gesundheitsverwaltung.
 
 ## Persona 
-![persona]("Persona Template 1-1.pdf")
+![persona](persona.pdf)
 
-<img src="Persona Template 1-1.pdf" alt="persona" style="width:200px;"/>
+<img src="persona.pdf" alt="persona" style="width:200px;"/>
 
 ## Wireframes
 <img src="Wireframe-Nutzertest.pdf" alt="wireframes" style="width:200px;"/>
