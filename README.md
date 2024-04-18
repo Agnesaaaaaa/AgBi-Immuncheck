@@ -10,3 +10,15 @@ Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Inf
 
 ## Wireframes
 <img src="wf_usertest.png" alt="wireframes" style="width:200px;"/>
+
+## Nutztest 1  
+<img src="wf.png" alt="persona" style="width:200px;"/>
+
+## Nutztest 2 
+<img src="wf1.png" alt="persona" style="width:200px;"/>
+
+## Nutztest 3
+<img src="wf2.png" alt="persona" style="width:200px;"/>
+
+## Nutztest 4 
+<img src="Nutzertest wf.pdf" alt="persona" style="width:200px;"/>
