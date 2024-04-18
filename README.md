@@ -21,4 +21,4 @@ Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Inf
 <img src="wf2.png" alt="persona" style="width:200px;"/>
 
 ## Nutztest 4 
-<img src="Nutzertest wf.pdf" alt="persona" style="width:200px;"/>
+<img src="Nutzertest_Wireframe.png" alt="persona" style="width:200px;"/>
