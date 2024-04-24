@@ -1,88 +1,135 @@
 import streamlit as st
-import datetime
+import pandas as pd
+ 
+# Setzen der Streamlit-Themeneinstellungen
+st.set_page_config(layout="wide", page_title="Agbi-Immuncheck - Digitaler Impfpass", page_icon=":syringe:", 
+                    initial_sidebar_state="expanded")
+ 
+# Titel der App
+st.markdown(
+    """
+<h1 style='color: black;'>Agbi-Immuncheck - Digitaler Impfpass</h1>
+    """
+    , unsafe_allow_html=True)
+ 
+# Datenframe für Impfdaten erstellen oder laden, falls vorhanden
+@st.cache
+def load_data():
+    return pd.DataFrame(columns=['Kategorie', 'Datum', 'Information'])
+ 
+data = load_data()
+ 
+# Benutzeroberfläche für Hinzufügen von Impfdaten
+category = st.sidebar.selectbox('Kategorie wählen', ['Impfungen', 'Symptome', 'Schweizerischer Impfplan, Profil'])
 
-# Kategorisierung der Seiten
-kategorien = {
-    "Gesundheit": ["Impfungen", "Symptome", "Arzt"],
-    "Profil": ["Profil"],
-}
 
-# Seitenkonfiguration
-st.set_page_config(layout="wide", page_title="AgBi-Immuncheck", page_icon="https://www.agbi.com/")
-
-
-# Navigationsleiste
-navigation = st.sidebar.selectbox("Kategorie", list(kategorien.keys()))
-ausgewählte_seite = st.sidebar.selectbox("Seite", kategorien[navigation])
-
-if ausgewählte_seite == "Impfungen":
-    # Impfungen-Seite
-    datum = st.date_input("Datum", value=datetime.date.today())
-    impfung = st.text_input("Impfung")
-    nachname = st.text_input("Nachname")
-    geburtstag = st.date_input("Geburtstag")
-    notiz = st.text_area("Notiz")
-    telefonnummer = st.text_input("Telefonnummer")
-    email = st.text_input("E-Mail-Adresse")
-    adresse = st.text_area("Adresse")
-
-    if st.button("Neue Impfung hinzufügen"):
-        # Daten speichern und verarbeiten
-        pass
-
-    # Impfdaten aus einer Datenbank laden
-    impfdaten = load_impfdaten_from_database()
-
-    # Liniendiagramm der Anzahl der Impfungen pro Monat
-    st.line_chart(
-        x=impfdaten["Datum"],
-        y=impfdaten["Anzahl Impfungen"],
-        title="Anzahl der Impfungen pro Monat"
+if category == 'Impfungen':
+    st.header('Impfungen')
+    # Hier können Sie die Benutzeroberfläche für Impfungen anzeigen und verwalten
+    date = st.date_input('Datum der Impfung')
+    info = st.text_input('Informationen zur Impfung')
+    if st.button('Impfung hinzufügen'):
+        data = data.append({'Kategorie': category, 'Datum': date, 'Information': info}, ignore_index=True)
+        st.success('Impfung erfolgreich hinzugefügt!')
+ 
+elif category == 'Symptome':
+    st.header('Symptome')
+    # Hier können Sie die Benutzeroberfläche für Symptome anzeigen und verwalten
+ 
+elif category == 'Schweizerischer Impfplan':
+    st.header('Schweizerischer Impfplan')
+    # Hier können Sie den schweizerischen Impfplan anzeigen
+ 
+# Benutzeroberfläche für Anzeigen von Impfdaten
+st.header('Gespeicherte Daten')
+st.dataframe(data)
+ 
+def main_bg():
+    st.markdown(
+        """
+<style>
+        .stApp {
+            background-color: #f2f7ff !important;
+            color: black;
+        }
+</style>
+        """,
+        unsafe_allow_html=True,
     )
-
-    # Tabelle der Impfdaten
-    st.table(impfdaten)
-elif ausgewählte_seite == "Symptome":
-    # Symptome-Seite
-    st.write("Symptome-Seite")
-elif ausgewählte_seite == "Arzt":
-    # Arzt-Seite
-    st.write("Arzt-Seite")
-elif ausgewählte_seite == "Profil":
-    # Profil-Seite
-    st.write("Profil-Seite")
-else:
-    # Muster-Seite (optional)
-    st.write("Muster-Seite")
-
-# Seitenkonfiguration
-st.set_page_config(layout="wide", page_title="AgBi-Immuncheck", page_icon="https://www.agbi.com/")
-
-# AgBi-Logo
-st.image("https://www.agbi.com/", width=200)
-
-# Hintergrundfarbe Blau
-st.set_option("theme.base", "light")
-st.set_option("theme.secondary", "#007bff")
-
-import streamlit as st
-import datetime
-
-# Replace this with your database connection and data retrieval logic
-def load_impfdaten_from_database():
-  # Connect to database
-  # ...
-  # Retrieve immunization data
-  # ...
-  # Return data as DataFrame
-  return impfdaten_df
-
-# ... rest of your code
-
-# Call the function
-impfdaten = load_impfdaten_from_database()
-
-# ... use Impfdaten for charts or tables
-
-from your_module import load_impfdaten_from_database
+ 
+main_bg()
+ 
+def sidebar_bg():
+    st.markdown(
+        """
+<style>
+        [data-testid="stSidebar"] {
+            background-color: white !important;
+            color: black;
+        }
+</style>
+        """,
+        unsafe_allow_html=True,
+    )
+ 
+sidebar_bg()
+ 
+try:
+    if st.button('Impfung hinzufügen'):
+        data = data.append({'Kategorie': category, 'Datum': date, 'Information': info}, ignore_index=True)
+        st.success('Impfung erfolgreich hinzugefügt!')
+except Exception as e:
+    st.error(f"Fehler beim Hinzufügen der Impfung: {e}")
+ 
+ 
+# Set constants
+DATA_FILE = "MyContactsTable.csv"
+DATA_COLUMNS = ["Name", "Strasse", "PLZ", "Ort", "Geburtsdatum"]
+# Set page configuration
+st.set_page_config(page_title="My Contacts", page_icon="🎂", layout="wide",  
+                   initial_sidebar_state="expanded")
+def init_github():
+    """Initialize the GithubContents object."""
+    if 'github' not in st.session_state:
+        st.session_state.github = GithubContents(
+            st.secrets["github"]["owner"],
+            st.secrets["github"]["repo"],
+            st.secrets["github"]["token"])
+def init_dataframe():
+    """Initialize or load the dataframe."""
+    if 'df' in st.session_state:
+        pass
+    elif st.session_state.github.file_exists(DATA_FILE):
+        st.session_state.df = st.session_state.github.read_df(DATA_FILE)
+    else:
+        st.session_state.df = pd.DataFrame(columns=DATA_COLUMNS)
+def add_entry_in_sidebar():
+    """Add a new entry to the DataFrame using pd.concat and calculate age."""
+    new_entry = {
+        DATA_COLUMNS[0]:  st.sidebar.text_input(DATA_COLUMNS[0]),  # Name
+        DATA_COLUMNS[1]:  st.sidebar.text_input(DATA_COLUMNS[1]),  # Strasse
+        DATA_COLUMNS[2]:  st.sidebar.text_input(DATA_COLUMNS[2]),  # PLZ
+        DATA_COLUMNS[3]:  st.sidebar.text_input(DATA_COLUMNS[3]),  # Ort
+        DATA_COLUMNS[4]:  st.sidebar.date_input(DATA_COLUMNS[4],
+                                                min_value=date(1950, 1, 1),
+                                                format="DD.MM.YYYY"),  # Geburtsdatum
+    }
+    # check wether all data is defined, otherwise show an error message
+    for key, value in new_entry.items():
+        if value == "":
+            st.sidebar.error(f"Bitte ergänze das Feld '{key}'")
+            return
+    if st.sidebar.button("Add"):
+        new_entry_df = pd.DataFrame([new_entry])
+        st.session_state.df = pd.concat([st.session_state.df, new_entry_df], ignore_index=True)
+        # Save the updated DataFrame to GitHub
+        name = new_entry[DATA_COLUMNS[0]]
+        msg = f"Add contact '{name}' to the file {DATA_FILE}"
+        st.session_state.github.write_df(DATA_FILE, st.session_state.df, msg)
+def display_dataframe():
+    """Display the DataFrame in the app."""
+    if not st.session_state.df.empty:
+        st.dataframe(st.session_state.df)
+    else:
+        st.write("No data to display.")
 
