@@ -1,52 +1,43 @@
 import streamlit as st
-import datetime
-from datetime import date
 import pandas as pd
-from github_contents import GithubContents
-
-# Set constants
-DATA_FILE = "imuTable.csv"
-DATA_COLUMNS = ["Datum der Impfung", "Informationen zur Impfung"]
-
-# Set page configuration
-st.set_page_config(page_title="AgBi-Immuncheck", layout="wide",  
-                   initial_sidebar_state="expanded")
-
-
-def init_github():
-    """Initialisieren Sie das GithubContents-Objekt."""
-    if 'github' not in st.session_state:
-        st.session_state.github = GithubContents(
-            st.secrets["github"]["owner"],
-            st.secrets["github"]["repo"],
-            st.secrets["github"]["token"])
-        
-def init_dataframe():
-    """Initialize or load the dataframe."""
-    if 'df' in st.session_state:
-        pass
-    elif st.session_state.github.file_exists(DATA_FILE):
-        st.session_state.df = st.session_state.github.read_df(DATA_FILE)
-    else:
-        st.session_state.df = pd.DataFrame(columns=DATA_COLUMNS)
-
-
-def add_entry_in_sidebar():
-    """Add a new entry to the DataFrame using pd.concat and calculate age."""
-    new_entry = {
-        DATA_COLUMNS[0]:  st.sidebar.text_input(DATA_COLUMNS[0]),  # Datum der Impfung
-        DATA_COLUMNS[1]:  st.sidebar.text_input(DATA_COLUMNS[1]),  # Informationen zur Impfung
-        DATA_COLUMNS[2]:  st.sidebar.date_input(DATA_COLUMNS[2],
-                                                min_value=date(1950, 1, 1),
-                                                format="DD.MM.YYYY"),  # Geburtsdatum
-    } 
-
-    if len(DATA_COLUMNS) > 2:
-        new_entry[DATA_COLUMNS[2]] = st.sidebar.date_input(
-            DATA_COLUMNS[2],
-            min_value=date(1950, 1, 1),
-            format="DD.MM.YYYY"
-        )
  
+st.set_page_config(layout="wide", page_title="Agbi-Immuncheck - Digitaler Impfpass", page_icon=":syringe:", 
+                    initial_sidebar_state="expanded")
+ 
+
+st.markdown(
+    """
+<h1 style='color: black;'>Agbi-Immuncheck - Digitaler Impfpass</h1>
+    """
+    , unsafe_allow_html=True)
+ 
+@st.cache
+def load_data():
+    return pd.DataFrame(columns=['Kategorie', 'Datum', 'Information'])
+ 
+data = load_data()
+ 
+# Benutzeroberfläche für Hinzufügen von Impfdaten
+category = st.sidebar.selectbox('Kategorie wählen', ['Impfungen', 'Symptome', 'Schweizerischer Impfplan, Profil'])
+
+
+if category == 'Impfungen':
+    st.header('Impfungen')
+    # Hier können Sie die Benutzeroberfläche für Impfungen anzeigen und verwalten
+    date = st.date_input('Datum der Impfung')
+    info = st.text_input('Informationen zur Impfung')
+    if st.button('Impfung hinzufügen'):
+        data = data.append({'Kategorie': category, 'Datum': date, 'Information': info}, ignore_index=True)
+        st.success('Impfung erfolgreich hinzugefügt!')
+ 
+elif category == 'Symptome':
+    st.header('Symptome')
+ 
+elif category == 'Schweizerischer Impfplan':
+    st.header('Schweizerischer Impfplan')
+    
+ 
+
+
 
 
