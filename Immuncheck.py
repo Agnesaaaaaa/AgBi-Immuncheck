@@ -38,7 +38,7 @@ def add_entry():
         submit_button = st.form_submit_button("Eintrag hinzufügen")
         
         if submit_button:
-            # Überprüfen, ob alle Felder ausgefüllt sind
+           
             if impfdatum and impfstoff and symptome:
                 new_entry = {
                     DATA_COLUMNS[0]: impfdatum,
@@ -46,15 +46,11 @@ def add_entry():
                     DATA_COLUMNS[2]: symptome,
                 }
                 
-                # Überprüfen Sie, ob der DataFrame in der Sitzung vorhanden ist
+               
                 if 'df' in st.session_state:
-                    # Erstellen Sie einen DataFrame für den neuen Eintrag
+                   
                     new_df = pd.DataFrame([new_entry])
-                    
-                    # Fügen Sie den neuen Eintrag zum vorhandenen DataFrame hinzu
                     st.session_state.df = pd.concat([st.session_state.df, new_df], ignore_index=True)
-                    
-                    # Speichern Sie den aktualisierten DataFrame in der CSV-Datei
                     try:
                         st.session_state.df.to_csv(DATA_FILE, index=False)
                         st.success("Neuer Eintrag erfolgreich hinzugefügt!")
@@ -65,7 +61,7 @@ def add_entry():
             else:
                 st.warning("Bitte füllen Sie alle Felder aus, bevor Sie einen Eintrag hinzufügen.")
                 
-    # Anzeige des DataFrame
+  
     display_dataframe()
 
 def display_dataframe():
@@ -76,7 +72,7 @@ def display_dataframe():
     else:
         st.warning("Es sind keine Einträge vorhanden.")
 
-# Initialisieren Sie die Daten (DataFrame) in der Sitzung
+
 def init_data():
     if 'df' not in st.session_state:
         try:
@@ -88,27 +84,42 @@ def init_data():
 init_data()
 add_entry()
 
-import streamlit as st
-
-# Überschrift in der Sidebar
 st.sidebar.header("Profil")
 
-# Kurzer Text unterhalb der Überschrift
 st.sidebar.write("Verwalten Sie Ihr persönliches Profil, einschließlich Name, Geburtsdatum und medizinischer Vorgeschichte.")
 
-# Widget zum Hochladen eines Profilfotos
+
 profile_image = st.sidebar.file_uploader("Profilfoto hochladen", type=["jpg", "jpeg", "png"])
-
-# Eingabe für den Namen
 name = st.sidebar.text_input("Name", placeholder="Ihr Name")
-
-# Eingabe für das Geburtsdatum
 birthdate = st.sidebar.date_input("Geburtsdatum")
 
-# Zeige das hochgeladene Profilfoto an
+
 if profile_image:
     st.sidebar.image(profile_image, caption="Profilfoto")
 
+
+st.markdown("""
+<style>
+    [data-testid=stSidebar] {
+        background-color: LightBlue;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <style>
+        /* Hintergrundfarbe der Sidebar auf Babyblau setzen */
+        [data-testid="stSidebar"] {
+            background-color: LightBlue;
+        }
+        
+        /* Textfarbe in der Sidebar auf Schwarz setzen */
+        [data-testid="stSidebar"] * {
+            color: black;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 
 
