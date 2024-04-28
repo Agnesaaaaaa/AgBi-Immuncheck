@@ -1,3 +1,4 @@
+
 import streamlit as st
 import datetime
 from datetime import date
@@ -17,7 +18,7 @@ st.set_page_config(layout="wide", page_title="Agbi-Immuncheck - Digitaler Impfpa
  
 st.markdown(
     """
-<h1 style='color: white;'>Agbi-Immuncheck - Digitaler Impfpass</h1>
+<h1 style='color: white;'>AgBi-Immuncheck - Digitaler Impfpass</h1>
     """
     , unsafe_allow_html=True)
 
@@ -34,7 +35,6 @@ def add_entry():
         impfdatum = st.date_input("Datum der Impfung", format="DD.MM.YYYY")
         impfstoff = st.text_input("Impfstoff/Wirkstoff", placeholder="Art der Impfung oder Impfstoff")
         symptome = st.text_input("Symptome", placeholder="Beschreiben Sie die Symptome")
-        info = st.text_input("Informationen zur Impfung", placeholder="Weitere Informationen")
         
         submit_button = st.form_submit_button("Eintrag hinzufügen")
         
@@ -65,6 +65,17 @@ def add_entry():
                     st.error("DataFrame ist nicht initialisiert.")
             else:
                 st.warning("Bitte füllen Sie alle Felder aus, bevor Sie einen Eintrag hinzufügen.")
+                
+    # Anzeige des DataFrame
+    display_dataframe()
+
+def display_dataframe():
+    """Zeigt den aktuellen DataFrame in der Streamlit-Anwendung an."""
+    if 'df' in st.session_state and not st.session_state.df.empty:
+        st.subheader("Aktuelle Impfungen:")
+        st.dataframe(st.session_state.df)
+    else:
+        st.warning("Es sind keine Einträge vorhanden.")
 
 # Initialisieren Sie die Daten (DataFrame) in der Sitzung
 def init_data():
@@ -77,7 +88,7 @@ def init_data():
 # Rufen Sie die Initialisierungsfunktion auf, bevor Sie den Eintrag hinzufügen
 init_data()
 add_entry()
- 
+
 
 
 
