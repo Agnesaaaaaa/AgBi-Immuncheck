@@ -22,7 +22,7 @@ st.markdown(
     """
     , unsafe_allow_html=True)
 
-category = st.sidebar.selectbox('Kategorie wählen', ['Impfungen', 'Symptome', 'Schweizerischer Impfplan, Profil'])
+category = st.sidebar.selectbox('Kategorie wählen', ['Impfungen','Schweizerischer Impfplan'])
 
 DATA_FILE = "Immucheck.csv"
 DATA_COLUMNS = ["Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome"]
