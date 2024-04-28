@@ -1,4 +1,3 @@
-
 import streamlit as st
 import datetime
 from datetime import date
@@ -88,6 +87,28 @@ def init_data():
 # Rufen Sie die Initialisierungsfunktion auf, bevor Sie den Eintrag hinzufügen
 init_data()
 add_entry()
+
+import streamlit as st
+
+# Überschrift in der Sidebar
+st.sidebar.header("Profil")
+
+# Kurzer Text unterhalb der Überschrift
+st.sidebar.write("Verwalten Sie Ihr persönliches Profil, einschließlich Name, Geburtsdatum und medizinischer Vorgeschichte.")
+
+# Widget zum Hochladen eines Profilfotos
+profile_image = st.sidebar.file_uploader("Profilfoto hochladen", type=["jpg", "jpeg", "png"])
+
+# Eingabe für den Namen
+name = st.sidebar.text_input("Name", placeholder="Ihr Name")
+
+# Eingabe für das Geburtsdatum
+birthdate = st.sidebar.date_input("Geburtsdatum")
+
+# Zeige das hochgeladene Profilfoto an
+if profile_image:
+    st.sidebar.image(profile_image, caption="Profilfoto")
+
 
 
 
