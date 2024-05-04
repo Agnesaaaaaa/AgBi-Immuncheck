@@ -19,8 +19,6 @@ https://agbi-immuncheck.streamlit.app
 ## Nutztest 2 
 <img src="wf1.png" alt="persona" style="width:200px;"/>
 
-## Nutztest 3 
-<img src="wf2.png" alt="persona" style="width:200px;"/>
 
 ## Nutztest 4 
 <img src="Nutzertest_Wireframe.png" alt="persona" style="width:200px;"/>
