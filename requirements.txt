@@ -2,3 +2,4 @@ pandas
 requests
 bcrypt
 github_contents
+secrets.toml
