@@ -174,6 +174,30 @@ def main():
 
         profile_image = st.sidebar.file_uploader("Profilfoto hochladen", type=["jpg", "jpeg", "png"])
         name = st.sidebar.text_input("Name", placeholder="Ihr Name")
-        birthdate = st.sidebar
+        birthdate = st.sidebar.date_input("Geburtsdatum")
 
+        if profile_image:
+            st.sidebar.image(profile_image, caption="Profilfoto")
+
+        st.markdown("""
+            <style>
+                /* Hintergrundfarbe der Sidebar auf Babyblau setzen */
+                [data-testid="stSidebar"] {
+                    background-color: LightBlue;
+                }
+                
+                /* Textfarbe in der Sidebar auf Schwarz setzen */
+                [data-testid="stSidebar"] * {
+                    color: black;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+
+        logout_button = st.button("Logout")
+        if logout_button:
+            st.session_state['authentication'] = False
+            st.experimental_rerun()
+
+if __name__ == "__main__":
+    main()
 
