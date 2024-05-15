@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
-from github_contents import GithubContents
-import binascii
 import bcrypt
+import binascii
+from github_contents import GithubContents  # Stellen Sie sicher, dass dieses Modul in requirements.txt ist
 
 st.markdown(
     """
@@ -133,12 +133,16 @@ def authenticate(username, password):
 def init_github():
     """Initialisiert das GithubContents-Objekt."""
     if 'github' not in st.session_state:
-        st.session_state.github = GithubContents(
-            st.secrets["github"]["owner"],
-            st.secrets["github"]["repo"],
-            st.secrets["github"]["token"]
-        )
-        print("github initialized")
+        try:
+            st.session_state.github = GithubContents(
+                st.secrets["github"]["owner"],
+                st.secrets["github"]["repo"],
+                st.secrets["github"]["token"]
+            )
+            print("github initialized")
+        except KeyError as e:
+            st.error(f"Fehlende Geheimnisse: {e}")
+            return
     
 def init_credentials():
     """Initialisiert oder lädt den DataFrame."""
@@ -170,30 +174,6 @@ def main():
 
         profile_image = st.sidebar.file_uploader("Profilfoto hochladen", type=["jpg", "jpeg", "png"])
         name = st.sidebar.text_input("Name", placeholder="Ihr Name")
-        birthdate = st.sidebar.date_input("Geburtsdatum")
+        birthdate = st.sidebar
 
-        if profile_image:
-            st.sidebar.image(profile_image, caption="Profilfoto")
-
-        st.markdown("""
-            <style>
-                /* Hintergrundfarbe der Sidebar auf Babyblau setzen */
-                [data-testid="stSidebar"] {
-                    background-color: LightBlue;
-                }
-                
-                /* Textfarbe in der Sidebar auf Schwarz setzen */
-                [data-testid="stSidebar"] * {
-                    color: black;
-                }
-            </style>
-        """, unsafe_allow_html=True)
-
-        logout_button = st.button("Logout")
-        if logout_button:
-            st.session_state['authentication'] = False
-            st.experimental_rerun()
-
-if __name__ == "__main__":
-    main()
 
