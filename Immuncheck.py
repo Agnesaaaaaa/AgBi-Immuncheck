@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
-import bcrypt
+from github_contents import GithubContents
 import binascii
-from github_contents import GithubContents  # Stellen Sie sicher, dass dieses Modul in requirements.txt ist
+import bcrypt
 
 st.markdown(
     """
@@ -133,16 +133,12 @@ def authenticate(username, password):
 def init_github():
     """Initialisiert das GithubContents-Objekt."""
     if 'github' not in st.session_state:
-        try:
-            st.session_state.github = GithubContents(
-                st.secrets["github"]["owner"],
-                st.secrets["github"]["repo"],
-                st.secrets["github"]["token"]
-            )
-            print("github initialized")
-        except KeyError as e:
-            st.error(f"Fehlende Geheimnisse: {e}")
-            return
+        st.session_state.github = GithubContents(
+            st.secrets["github"]["owner"],
+            st.secrets["github"]["repo"],
+            st.secrets["github"]["token"]
+        )
+        print("github initialized")
     
 def init_credentials():
     """Initialisiert oder lädt den DataFrame."""
@@ -200,4 +196,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
