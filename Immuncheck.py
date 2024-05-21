@@ -125,6 +125,35 @@ def github_initialisieren():
         )
         print("github initialisiert")
 
+def github_initialisieren():
+    if 'github' not in st.session_state:
+        try:
+            st.write("Lade GitHub Secrets...")
+            github_owner = st.secrets["github"]["owner"]
+            github_repo = st.secrets["github"]["repo"]
+            github_token = st.secrets["github"]["token"]
+            
+            st.write(f"GitHub Owner: {github_owner}")
+            st.write(f"GitHub Repo: {github_repo}")
+            st.write("GitHub Token erfolgreich geladen.")
+            
+            st.session_state.github = GithubContents(github_owner, github_repo, github_token)
+            st.success("GitHub erfolgreich initialisiert.")
+        except KeyError as e:
+            st.error(f"Fehler beim Zugriff auf die GitHub-Konfigurationsdaten: {e}")
+
+def main():
+    github_initialisieren()
+    # Weitere Logik hier...
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
     
 def anmeldeinformationen_initialisieren():
     if 'df_users' not in st.session_state:
