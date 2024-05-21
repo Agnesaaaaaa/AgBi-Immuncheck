@@ -125,18 +125,6 @@ def github_initialisieren():
         )
         print("github initialisiert")
 
-def github_initialisieren():
-    import streamlit as st
-    from github_contents import GithubContents
-
-    if 'github' not in st.session_state:
-        # Zugriff auf die GitHub-Konfigurationsdaten aus den Secrets
-        github_owner = st.secrets["github"]["owner"]
-        github_repo = st.secrets["github"]["repo"]
-        github_token = st.secrets["github"]["token"]
-        
-        # Initialisierung der GithubContents-Klasse mit den Konfigurationsdaten
-        st.session_state.github = GithubContents(github_owner, github_repo, github_token)
     
 def anmeldeinformationen_initialisieren():
     if 'df_users' not in st.session_state:
