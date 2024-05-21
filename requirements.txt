@@ -1,6 +1,0 @@
-streamlit
-pandas
-requests
-bcrypt
-github_contents
-
