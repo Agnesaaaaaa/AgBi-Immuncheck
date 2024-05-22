@@ -246,7 +246,7 @@ def main():
             "Startseite": main_page,
             "Profil": profile_page,
             "Impfungen": add_entry,
-            "Infos": info_page  # Hier fügen Sie Ihre neue Seite hinzu
+            "Infos": info_page,
         }
         st.sidebar.header("Menü")
         page = st.sidebar.selectbox("Wähle deine Seite", list(pages.keys()))
