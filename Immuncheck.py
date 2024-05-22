@@ -19,7 +19,7 @@ DATA_FILE = "Immucheck.csv"
 DATA_COLUMNS = ["Benutzername", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
 
 LOGIN_DATA_FILE = "MyLoginTable.csv"
-DATA_COLUMNS_LOGIN = ['Benutzername', 'Name', 'Passwort']
+DATA_COLUMNS_LOGIN = ['username', 'name', 'password']
 
 PROFILE_DATA_FILE = "profile_data.csv"
 DATA_COLUMNS_PROFILE = ['Benutzername', 'Name', 'Geburtsdatum', 'Hausarzt', 'Allergien', 'Medikamente']
