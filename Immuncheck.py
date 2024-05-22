@@ -9,7 +9,7 @@ import os
 
 st.markdown(
     """
-    <h1 style='color: white;'>AgBi-Immuncheck - Digital Vaccination Passport</h1>
+    <h1 style='color: white;'> Digital Vaccination Passport</h1>
     """,
     unsafe_allow_html=True
 )
@@ -86,8 +86,8 @@ def initialize_data():
 def login_page():
     st.title("Willkommen bei AgBi-Immuncheck")
     with st.form(key='login_form'):
-        username = st.text_input("Username")
-        password = st.text_input("Password", type="password")
+        username = st.text_input("Benutzername")
+        password = st.text_input("Passwort", type="passwort")
         if st.form_submit_button("Login"):
             authenticate(username, password)
 
