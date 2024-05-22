@@ -25,7 +25,7 @@ st.markdown(
 
 # Constants
 DATA_FILE = "Immucheck.csv"
-DATA_COLUMNS = ["Benutzername", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
+DATA_COLUMNS = ["username", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
 
 LOGIN_DATA_FILE = "MyLoginTable.csv"
 DATA_COLUMNS_LOGIN = ['username', 'name', 'password']
