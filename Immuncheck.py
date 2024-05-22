@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 from datetime import date
@@ -6,13 +7,22 @@ import binascii
 import bcrypt
 import os
 
+st.markdown("""
+    <style>
+        [data-testid="stSidebar"] {
+            background-color: lightblue !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
+# Anzeige der App
 st.markdown(
     """
-    <h1 style='color: white;'> Digital Vaccination Passport</h1>
+    <h1 style='color: white;'>AgBi-Immuncheck - Digitaler Impfpass</h1>
     """,
     unsafe_allow_html=True
 )
+
 
 # Constants
 DATA_FILE = "Immucheck.csv"
@@ -84,7 +94,7 @@ def initialize_data():
             st.session_state.df = pd.DataFrame(columns=DATA_COLUMNS)
 
 def login_page():
-    st.title("Willkommen bei AgBi-Immuncheck")
+    st.title("Willkommen bei AgBi-Immuncheck 💉")
     with st.form(key='login_form'):
         username = st.text_input("username")
         password = st.text_input("password", type="password")
@@ -92,7 +102,7 @@ def login_page():
             authenticate(username, password)
 
 def registration_page():
-    st.title("Registrieren")
+    st.title("Registrieren 💉")
     with st.form(key='register_form'):
         new_username = st.text_input("Neuer Username")
         new_name = st.text_input("name")
@@ -141,7 +151,7 @@ def initialize_login_information():
             st.session_state.df_users = pd.DataFrame(columns=DATA_COLUMNS_LOGIN)
 
 def main_page():
-    st.header("Willkommen zu AgBi-Immuncheck")
+    st.header("Willkommen zu AgBi-Immuncheck 💉")
     st.write("""
     Unsere App AgBi- Immuncheck bietet eine benutzerfreundliche Plattform zur Erfassung und Verwaltung von Impfungen sowie zur Überwachung von Symptomen im Zusammenhang mit den Impfungen. Entwickelt für Einzelpersonen, ermöglicht unsere Anwendung eine einfache und sichere Verwaltung von Impfdaten und Gesundheitsinformationen.
 
@@ -165,7 +175,7 @@ def save_feedback(feedback_text, rating):
     feedback_df.to_csv("feedback.csv", mode='a', header=not os.path.exists("feedback.csv"), index=False)
 
 def profile_page():
-    st.title("Mein Profil")
+    st.title("Mein Profil 👤")
 
     if 'profile' not in st.session_state:
         st.session_state.profile = {}
@@ -208,6 +218,15 @@ def profile_page():
             st.session_state.github.write_df(PROFILE_DATA_FILE, profile_df, "updated profile")
             st.success("Profile saved!")
 
+
+def info_page():
+    st.header("Informationen")
+    st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
+    st.image('Impf.jpg', caption='Schweizerischer Impfplan')
+
+
+
+
 def main():
     initialize_github()
     initialize_login_information()
@@ -226,7 +245,8 @@ def main():
         pages = {
             "Startseite": main_page,
             "Profil": profile_page,
-            "Impfungen": add_entry
+            "Impfungen": add_entry,
+            "Infos": info_page  # Hier fügen Sie Ihre neue Seite hinzu
         }
         st.sidebar.header("Menü")
         page = st.sidebar.selectbox("Wähle deine Seite", list(pages.keys()))
