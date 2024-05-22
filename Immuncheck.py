@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 from datetime import date
@@ -24,35 +23,35 @@ st.markdown(
 )
 
 
-# Constants
 DATA_FILE = "Immucheck.csv"
-DATA_COLUMNS = ["username", "vaccination_stare", "vaccine_drug", "symptoms", "follow_up_date"]
+DATA_COLUMNS = ["username", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
 
 LOGIN_DATA_FILE = "MyLoginTable.csv"
 DATA_COLUMNS_LOGIN = ['username', 'name', 'password']
 
 PROFILE_DATA_FILE = "profile_data.csv"
-DATA_COLUMNS_PROFILE = ['Benutzername', 'Name', 'Geburtsdatum', 'Hausarzt', 'Allergien', 'Medikamente']
+DATA_COLUMNS_PROFILE = ['benutzername', 'name', 'geburtstag', 'hausarzt', 'allergien', 'medikamente', 'profilbild']
 
 def add_entry():
     st.header('Impfungen')
-    with st.form(key="entry_form"):
-        vaccination_date = st.date_input("Datum der Impfung", format="DD.MM.YYYY")
-        vaccine_drug = st.text_input("Impfstoff/Wirkstoff", placeholder="Art der Impfung oder Impfstoff")
-        symptoms = st.text_input("Symptome", placeholder="Beschreiben Sie die Symptome")
-        follow_up_date = st.date_input("Nachimpfungsdatum", format="DD.MM.YYYY")
+    with st.form(key="eintrag_formular"):
+        impfdatum = st.date_input("Datum der Impfung", format="DD.MM.YYYY")
+        impfstoff_medikament = st.text_input("Impfstoff/Wirkstoff", placeholder="Art der Impfung oder Medikament")
+        symptome = st.text_input("Symptome", placeholder="Beschreiben Sie die Symptome")
+        nachimpfungsdatum = st.date_input("Nachimpfungsdatum", format="DD.MM.YYYY")
         submit_button = st.form_submit_button("Eintrag hinzufügen")
         if submit_button:
-            if vaccination_date and vaccine_drug and symptoms and follow_up_date:
-                new_entry = {
+            if impfdatum and impfstoff_medikament and symptome and nachimpfungsdatum:
+                neuer_eintrag = {
                     DATA_COLUMNS[0]: st.session_state['username'],
-                    DATA_COLUMNS[1]: vaccination_date,
-                    DATA_COLUMNS[2]: vaccine_drug,
-                    DATA_COLUMNS[3]: symptoms,
-                    DATA_COLUMNS[4]: follow_up_date
-                }
+                    DATA_COLUMNS[1]: impfdatum,
+                    DATA_COLUMNS[2]: impfstoff_medikament,
+                    DATA_COLUMNS[3]: symptome,
+                    DATA_COLUMNS[4]: nachimpfungsdatum
+                }  # Hier fehlt die schließende Klammer
+
                 if 'df' in st.session_state:
-                    new_df = pd.DataFrame([new_entry])
+                    new_df = pd.DataFrame([neuer_eintrag])
                     st.session_state.df = pd.concat([st.session_state.df, new_df], ignore_index=True)
                     try:
                         st.session_state.df.to_csv(DATA_FILE, index=False)
@@ -68,7 +67,6 @@ def add_entry():
                 st.warning("Bitte füllen Sie alle Felder aus, bevor Sie einen Eintrag hinzufügen.")
     show_data()
 
-
 def show_data():
     if 'df' in st.session_state and not st.session_state.df.empty:
         if 'username' not in st.session_state.df.columns:
@@ -79,16 +77,16 @@ def show_data():
             st.subheader("Deine Impfungen:")
             st.dataframe(user_df.drop(columns=['username']))
         else:
-            st.warning("No entries found.")
+            st.warning("Keine Einträge gefunden.")
     else:
-        st.warning("No entries found.")
+        st.warning("Keine Einträge gefunden.")
 
 def initialize_data():
     if 'df' not in st.session_state:
         try:
             df = pd.read_csv(DATA_FILE)
-            if 'username' not in df.columns:
-                df['username'] = ""
+            if 'Benutzername' not in df.columns:
+                df['Benutzername'] = ""
             st.session_state.df = df
         except FileNotFoundError:
             st.session_state.df = pd.DataFrame(columns=DATA_COLUMNS)
