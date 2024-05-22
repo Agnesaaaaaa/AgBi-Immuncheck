@@ -132,7 +132,7 @@ def initialize_github():
             st.secrets["github"]["repo"],
             st.secrets["github"]["token"]
         )
-        st.write("GitHub initialized")
+    
 
 def initialize_login_information():
     if 'df_users' not in st.session_state:
