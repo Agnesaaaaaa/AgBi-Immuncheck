@@ -6,7 +6,7 @@ import binascii
 import bcrypt
 import os
 
-# HTML Header
+
 st.markdown(
     """
     <h1 style='color: white;'>AgBi-Immuncheck - Digital Vaccination Passport</h1>
@@ -16,22 +16,22 @@ st.markdown(
 
 # Constants
 DATA_FILE = "Immucheck.csv"
-DATA_COLUMNS = ["username", "Vaccination Date", "Vaccine/Drug", "Symptoms", "Follow-up Date"]
+DATA_COLUMNS = ["Benutzername", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
 
 LOGIN_DATA_FILE = "MyLoginTable.csv"
-DATA_COLUMNS_LOGIN = ['username', 'name', 'password']
+DATA_COLUMNS_LOGIN = ['Benutzername', 'Name', 'Passwort']
 
 PROFILE_DATA_FILE = "profile_data.csv"
-DATA_COLUMNS_PROFILE = ['username', 'name', 'birth_date', 'general_practitioner', 'allergies', 'medications', 'profile_image']
+DATA_COLUMNS_PROFILE = ['Benutzername', 'Name', 'Geburtsdatum', 'Hausarzt', 'Allergien', 'Medikamente']
 
 def add_entry():
-    st.header('Vaccinations')
+    st.header('Impfungen')
     with st.form(key="entry_form"):
-        vaccination_date = st.date_input("Vaccination Date", format="DD.MM.YYYY")
-        vaccine_drug = st.text_input("Vaccine/Drug", placeholder="Type of vaccination or drug")
-        symptoms = st.text_input("Symptoms", placeholder="Describe the symptoms")
-        follow_up_date = st.date_input("Follow-up Date", format="DD.MM.YYYY")
-        submit_button = st.form_submit_button("Add Entry")
+        vaccination_date = st.date_input("Datum der Impfung", format="DD.MM.YYYY")
+        vaccine_drug = st.text_input("Impfstoff/Wirkstoff", placeholder="Art der Impfung oder Impfstoff")
+        symptoms = st.text_input("Symptome", placeholder="Beschreiben Sie die Symptome")
+        follow_up_date = st.date_input("Nachimpfungsdatum", format="DD.MM.YYYY")
+        submit_button = st.form_submit_button("Eintrag hinzufügen")
         if submit_button:
             if vaccination_date and vaccine_drug and symptoms and follow_up_date:
                 new_entry = {
@@ -46,17 +46,18 @@ def add_entry():
                     st.session_state.df = pd.concat([st.session_state.df, new_df], ignore_index=True)
                     try:
                         st.session_state.df.to_csv(DATA_FILE, index=False)
-                        st.success("New entry added successfully!")
+                        st.success("Neuer Eintrag erfolgreich hinzugefügt!")
                         
-                        # Save data to GitHub
-                        st.session_state.github.write_df(DATA_FILE, st.session_state.df, "added new entry")
+                        # Save data on GitHub
+                        st.session_state.github.write_df(DATA_FILE, st.session_state.df, "neuer Eintrag hinzugefügt")
                     except Exception as e:
-                        st.error(f"Error saving data: {e}")
+                        st.error(f"Fehler beim Speichern der Daten: {e}")
                 else:
-                    st.error("DataFrame is not initialized.")
+                    st.error("DataFrame ist nicht initialisiert.")
             else:
-                st.warning("Please fill in all fields before adding an entry.")
+                st.warning("Bitte füllen Sie alle Felder aus, bevor Sie einen Eintrag hinzufügen.")
     show_data()
+
 
 def show_data():
     if 'df' in st.session_state and not st.session_state.df.empty:
@@ -65,7 +66,7 @@ def show_data():
             return
         user_df = st.session_state.df[st.session_state.df['username'] == st.session_state['username']]
         if not user_df.empty:
-            st.subheader("Your current vaccinations:")
+            st.subheader("Deine Impfungen:")
             st.dataframe(user_df.drop(columns=['username']))
         else:
             st.warning("No entries found.")
@@ -91,12 +92,12 @@ def login_page():
             authenticate(username, password)
 
 def registration_page():
-    st.title("Register")
+    st.title("Registrieren")
     with st.form(key='register_form'):
-        new_username = st.text_input("New Username")
+        new_username = st.text_input("Neuer Username")
         new_name = st.text_input("Name")
-        new_password = st.text_input("New Password", type="password")
-        if st.form_submit_button("Register"):
+        new_password = st.text_input("Neues Passwort", type="password")
+        if st.form_submit_button("Registrieren"):
             hashed_password = bcrypt.hashpw(new_password.encode('utf8'), bcrypt.gensalt())
             hashed_password_hex = binascii.hexlify(hashed_password).decode()
             if new_username in st.session_state.df_users['username'].values:
@@ -106,7 +107,7 @@ def registration_page():
                 new_user = pd.DataFrame([[new_username, new_name, hashed_password_hex]], columns=DATA_COLUMNS_LOGIN)
                 st.session_state.df_users = pd.concat([st.session_state.df_users, new_user], ignore_index=True)
                 st.session_state.github.write_df(LOGIN_DATA_FILE, st.session_state.df_users, "added new user")
-                st.success("Registration successful! You can now log in.")
+                st.success("Registrierung erfolgreich! Sie können sich jetzt einloggen")
 
 def authenticate(username, password):
     login_df = st.session_state.df_users
@@ -141,18 +142,18 @@ def initialize_login_information():
             st.session_state.df_users = pd.DataFrame(columns=DATA_COLUMNS_LOGIN)
 
 def main_page():
-    st.header("Welcome to AgBi-Immuncheck")
+    st.header("Willkommen zu AgBi-Immuncheck")
     st.write("""
-    Our app AgBi-Immuncheck offers a user-friendly platform for recording and managing vaccinations and monitoring related symptoms. Designed for individuals, our application allows easy and secure management of vaccination data and health information.
+    Unsere App AgBi- Immuncheck bietet eine benutzerfreundliche Plattform zur Erfassung und Verwaltung von Impfungen sowie zur Überwachung von Symptomen im Zusammenhang mit den Impfungen. Entwickelt für Einzelpersonen, ermöglicht unsere Anwendung eine einfache und sichere Verwaltung von Impfdaten und Gesundheitsinformationen.
 
-    Users can record their vaccinations in the app, including the vaccine, date, and location. This provides a central and easily accessible record of all received vaccinations. The app allows users to create profiles and store personal information such as name, birthdate, and medical history. This enables individual customization of vaccination and health management.
+    Benutzer können ihre Impfungen in der App erfassen, einschließlich des Impfstoffs, des Datums und des Impforts. Dies bietet eine zentrale und leicht zugängliche Aufzeichnung aller erhaltenen Impfungen. Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Informationen wie Name, Geburtsdatum und medizinische Vorgeschichte zu speichern. Dies ermöglicht eine individuelle Anpassung der Impf- und Gesundheitsverwaltung.
     """)
-    st.write("Share your experiences with us!")
+    st.write("Teilen Sie uns Ihre Erfahrungen mit!")
     
     # Feedback form
-    feedback_text = st.text_area("Enter your feedback", height=150)
-    rating = st.slider("Rate your experience", min_value=1, max_value=5, step=1)
-    submit_button = st.button("Submit Feedback")
+    feedback_text = st.text_area("Geben Sie Ihr Feedback ein", height=150)
+    rating = st.slider("Bewerten Sie Ihre Erfahrung", min_value=1, max_value=5, step=1)
+    submit_button = st.button("Feedback absenden")
     
     # Submit feedback
     if submit_button:
@@ -165,14 +166,12 @@ def save_feedback(feedback_text, rating):
     feedback_df.to_csv("feedback.csv", mode='a', header=not os.path.exists("feedback.csv"), index=False)
 
 def profile_page():
-    st.title("My Profile")
+    st.title("Mein Profil")
 
     if 'profile' not in st.session_state:
         st.session_state.profile = {}
 
-    if 'profile_image' not in st.session_state:
-        st.session_state.profile_image = None
-
+    
     if st.session_state.github.file_exists(PROFILE_DATA_FILE):
         profile_df = st.session_state.github.read_df(PROFILE_DATA_FILE)
         profile_dict = profile_df.set_index('username').T.to_dict()
@@ -180,36 +179,30 @@ def profile_page():
     else:
         profile_df = pd.DataFrame(columns=DATA_COLUMNS_PROFILE)
 
-    # Display profile information
+    
     if st.session_state.profile:
-        st.subheader("Saved Profile Information")
+        st.subheader("Speichern")
         for key, value in st.session_state.profile.items():
             st.write(f"{key.capitalize()}: {value}")
     else:
         st.info("No profile information found.")
 
-    # Upload profile picture
-    uploaded_image = st.file_uploader("Upload profile picture", type=["jpg", "jpeg", "png"])
-    if uploaded_image:
-        st.session_state.profile_image = uploaded_image.read()
-        st.image(st.session_state.profile_image, caption="Profile Picture", use_column_width=True)
-
+    
     with st.form(key='profile_form'):
         name = st.text_input("Name", value=st.session_state.profile.get('name', ''))
-        birth_date = st.date_input("Birth Date", value=st.session_state.profile.get('birth_date', date(2000, 1, 1)))
-        general_practitioner = st.text_input("General Practitioner", value=st.session_state.profile.get('general_practitioner', ''))
-        allergies = st.text_input("Allergies", value=st.session_state.profile.get('allergies', ''))
-        medications = st.text_input("Medications", value=st.session_state.profile.get('medications', ''))
+        birth_date = st.date_input("Geburtsdatum", value=st.session_state.profile.get('Geburtsdatum', date(2000, 1, 1)))
+        general_practitioner = st.text_input("Hausarzt", value=st.session_state.profile.get('Hausarzt', ''))
+        allergies = st.text_input("Allergien", value=st.session_state.profile.get('Allergien', ''))
+        medications = st.text_input("Medikamente", value=st.session_state.profile.get('Medikamente', ''))
 
-        if st.form_submit_button("Save Profile"):
+        if st.form_submit_button("Speichern"):
             st.session_state.profile.update({
                 'username': st.session_state['username'],
                 'name': name,
-                'birth_date': birth_date,
-                'general_practitioner':general_practitioner,
-                'allergies': allergies,
-                'medications': medications,
-                'profile_image': st.session_state.profile_image
+                'Geburtstdaum': birth_date,
+                'Hausarzt':general_practitioner,
+                'Allergien': allergies,
+                'Medikamente': medications,
             })
 
             profile_df = pd.DataFrame([st.session_state.profile])
@@ -232,15 +225,15 @@ def main():
     else:
         initialize_data()
         pages = {
-            "Dashboard": main_page,
-            "Profile": profile_page,
-            "Vaccinations": add_entry
+            "Startseite": main_page,
+            "Profil": profile_page,
+            "Impfungen": add_entry
         }
-        st.sidebar.header("Navigation")
-        page = st.sidebar.selectbox("Select Page", list(pages.keys()))
+        st.sidebar.header("Menü")
+        page = st.sidebar.selectbox("Wähle deine Seite", list(pages.keys()))
         pages[page]()
 
-        st.sidebar.header("Profile")
+        
         if st.sidebar.button("Logout"):
             st.session_state['authentication'] = False
             st.experimental_rerun()
