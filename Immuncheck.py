@@ -83,6 +83,7 @@ def show_data():
         st.warning("No entries found.")
 
 def initialize_data():
+    # Kommentar gut gemacht.
     if 'df' not in st.session_state:
         try:
             df = pd.read_csv(DATA_FILE)
