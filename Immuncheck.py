@@ -84,7 +84,7 @@ def initialize_data():
             st.session_state.df = pd.DataFrame(columns=DATA_COLUMNS)
 
 def login_page():
-    st.title("Login")
+    st.title("Willkommen bei AgBi-Immuncheck")
     with st.form(key='login_form'):
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
@@ -132,7 +132,6 @@ def initialize_github():
             st.secrets["github"]["repo"],
             st.secrets["github"]["token"]
         )
-    
 
 def initialize_login_information():
     if 'df_users' not in st.session_state:
