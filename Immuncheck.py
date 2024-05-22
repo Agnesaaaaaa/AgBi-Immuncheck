@@ -86,8 +86,8 @@ def initialize_data():
 def login_page():
     st.title("Willkommen bei AgBi-Immuncheck")
     with st.form(key='login_form'):
-        username = st.text_input("Benutzername")
-        password = st.text_input("Passwort", type="passwort")
+        username = st.text_input("username")
+        password = st.text_input("password", type="password")
         if st.form_submit_button("Login"):
             authenticate(username, password)
 
@@ -95,7 +95,7 @@ def registration_page():
     st.title("Registrieren")
     with st.form(key='register_form'):
         new_username = st.text_input("Neuer Username")
-        new_name = st.text_input("Name")
+        new_name = st.text_input("name")
         new_password = st.text_input("Neues Passwort", type="password")
         if st.form_submit_button("Registrieren"):
             hashed_password = bcrypt.hashpw(new_password.encode('utf8'), bcrypt.gensalt())
