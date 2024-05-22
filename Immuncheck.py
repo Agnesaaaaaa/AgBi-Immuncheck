@@ -26,7 +26,7 @@ st.markdown(
 
 # Constants
 DATA_FILE = "Immucheck.csv"
-DATA_COLUMNS = ["Benutzername", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
+DATA_COLUMNS = ["username", "vaccination_stare", "vaccine_drug", "symptoms", "follow_up_date"]
 
 LOGIN_DATA_FILE = "MyLoginTable.csv"
 DATA_COLUMNS_LOGIN = ['username', 'name', 'password']
@@ -246,7 +246,7 @@ def main():
             "Startseite": main_page,
             "Profil": profile_page,
             "Impfungen": add_entry,
-            "Infos": info_page,
+            "Infos": info_page  # Hier fügen Sie Ihre neue Seite hinzu
         }
         st.sidebar.header("Menü")
         page = st.sidebar.selectbox("Wähle deine Seite", list(pages.keys()))
