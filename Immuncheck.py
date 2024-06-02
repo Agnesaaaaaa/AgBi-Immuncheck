@@ -221,25 +221,79 @@ def info_page():
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
     st.subheader("Standardimpfungen in der Schweiz")
 
-    # Define the data for the table
-    data = {
-        "Gruppe": ["Säuglinge und Kinder", "Jugendliche", "Erwachsene", "Senioren (ab 65 Jahren)", "Spezifische Gruppen", "Bestimmte Gesundheitszustände", "Weitere Empfehlungen"],
-        "Impfungen": [
-            "Hepatitis B (3 Dosen), Diphtherie (4 Dosen), Tetanus (4 Dosen), Pertussis (4 Dosen), Haemophilus influenzae Typ b (4 Dosen), Poliomyelitis (4 Dosen), Pneumokokken-Konjugat (4 Dosen), Rotavirus (2 oder 3 Dosen), Masern, Mumps, Röteln (2 Dosen), Varizellen (2 Dosen)",
-            "Humanes Papillomavirus (2 Dosen), Diphtherie (3 Dosen), Tetanus (3 Dosen), Pertussis (3 Dosen)",
-            "Diphtherie (3 Dosen), Tetanus (3 Dosen), Pertussis (3 Dosen), Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
-            "Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
-            "Schwangere: Grippe (1 Dosis pro Schwangerschaft), Tdap während jeder Schwangerschaft; Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
-            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken (alle 10 Jahre), Influenza (jährlich), Hepatitis B (3 Dosen); Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
-            "Regelmäßige Überprüfung des Impfstatus; Beratung durch Fachpersonal für individuelle Impfempfehlungen"
-        ]
-    }
+    # Säuglinge und Kinder
+    st.markdown("""
+    ### Säuglinge und Kinder
+    - **Hepatitis B**
+        - 1. Dosis: 2 Monate
+        - 2. Dosis: 4 Monate
+        - 3. Dosis: 12 Monate
+    - **Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)**
+        - 1. Dosis: 2 Monate
+        - 2. Dosis: 4 Monate
+        - 3. Dosis: 6 Monate
+        - 4. Dosis: 15-24 Monate
+    - **Pneumokokken-Konjugat (PCV)**
+        - 1. Dosis: 2 Monate
+        - 2. Dosis: 4 Monate
+        - 3. Dosis: 12 Monate
+    - **Rotavirus**
+        - 1. Dosis: 2 Monate
+        - 2. Dosis: 4 Monate
+    - **Masern, Mumps, Röteln (MMR)**
+        - 1. Dosis: 12 Monate
+        - 2. Dosis: 15-24 Monate
+    - **Varizellen (Windpocken)**
+        - 1. Dosis: 11-15 Jahre (wenn nicht zuvor immunisiert)
+    """)
 
-    # Create a DataFrame from the data
-    df = pd.DataFrame(data)
+    # Jugendliche
+    st.markdown("""
+    ### Jugendliche
+    - **Humanes Papillomavirus (HPV)**
+        - Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
+    - **Diphtherie, Tetanus, Pertussis (Tdap)**
+        - Auffrischungsimpfung: 11-15 Jahre
+    """)
 
-    # Display the DataFrame as a table
-    st.table(df)
+    # Erwachsene
+    st.markdown("""
+    ### Erwachsene
+    - **Diphtherie, Tetanus, Pertussis (Tdap)**
+        - Auffrischungsimpfung: alle 20 Jahre
+    - **Grippe (jährlich)**
+        - Besonders empfohlen für Personen über 65 Jahre und Personen mit chronischen Krankheiten
+    - **Pneumokokken**
+        - Besonders empfohlen für Personen über 65 Jahre und Personen mit bestimmten chronischen Krankheiten
+    """)
+
+    # Senioren (ab 65 Jahren)
+    st.markdown("""
+    ### Senioren (ab 65 Jahren)
+    - Grippe (jährlich)
+    - Pneumokokken
+    """)
+
+    # Spezifische Gruppen
+    st.markdown("""
+    ### Spezifische Gruppen
+    - **Schwangere**: Grippe und Tdap während jeder Schwangerschaft
+    - **Reisende**: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein (z.B. Gelbfieber, Typhus, Hepatitis A und B, Tollwut, Japanische Enzephalitis)
+    """)
+
+    # Impfungen für bestimmte Gesundheitszustände
+    st.markdown("""
+    ### Impfungen für bestimmte Gesundheitszustände
+    - **Chronische Erkrankungen** (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B
+    - **Geschwächtes Immunsystem**: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert
+    """)
+
+    # Weitere Empfehlungen
+    st.markdown("""
+    ### Weitere Empfehlungen
+    - **Regelmäßige Überprüfung des Impfstatus**: Impfstatus regelmäßig überprüfen und Auffrischungsimpfungen nach Bedarf durchführen
+    - **Beratung durch Fachpersonal**: Für individuelle Impfempfehlungen sollte man sich stets mit einem Arzt oder einer Ärztin beraten, da die Impfempfehlungen sich ändern können
+    """)
 
 
 
