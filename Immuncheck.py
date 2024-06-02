@@ -219,7 +219,7 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-    st.subheader("Standardimpfungen in der Schweiz")
+    st.subheader('Standardimpfungen in der Schweiz')
 
     # Säuglinge und Kinder
     st.markdown("""
@@ -249,7 +249,7 @@ def info_page():
 
     # Jugendliche
     st.markdown("""
-    ## Jugendliche
+    ###  Jugendliche
     - **Humanes Papillomavirus (HPV)**
         - Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
@@ -258,7 +258,7 @@ def info_page():
 
     # Erwachsene
     st.markdown("""
-    ## Erwachsene
+    ### Erwachsene
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
         - Auffrischungsimpfung: alle 20 Jahre
     - **Grippe (jährlich)**
