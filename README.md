@@ -1,3 +1,5 @@
+# AgBi-Immuncheck
+
 Hi there 👋 
 
 Willkommen bei AgBi-Immuncheck! Unsere App bietet eine benutzerfreundliche Plattform zur Erfassung und Verwaltung von Impfungen sowie zur Überwachung von Symptomen im Zusammenhang mit den Impfungen. Entwickelt für Einzelpersonen, ermöglicht unsere Anwendung eine einfache und sichere Verwaltung von Impfdaten und Gesundheitsinformationen.
@@ -9,12 +11,15 @@ Willkommen bei AgBi-Immuncheck! Unsere App bietet eine benutzerfreundliche Platt
 - **Überwachung von Symptomen**: Verfolgen Sie Symptome im Zusammenhang mit den Impfungen, um Ihre Gesundheit im Blick zu behalten.
 
 
+## Benutzung
+
+Besuchen Sie die Live-Version unserer Anwendung unter: [AgBi-Immuncheck](https://agbi-immuncheck.streamlit.app)
+
 ## Mitwirkende
 
-- Blertaaaaa 
+- Bleraaaaa
+
 
 ## Danksagungen
 
-- Danke an alle Mitwirkenden und Tester, die dieses Projekt möglich gemacht haben.✔️
-
-https://agbi-immuncheck.streamlit.app/#agbi-immuncheck-digitaler-impfpass
+- Danke an alle Mitwirkenden und Tester, die dieses Projekt möglich gemacht haben.✔️ 
