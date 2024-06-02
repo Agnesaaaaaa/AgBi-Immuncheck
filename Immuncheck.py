@@ -220,7 +220,7 @@ def profile_page():
 
 
 def info_page():
-    st.header("Informationen")
+    st.header("Informationsplattform")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
 
