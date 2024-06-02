@@ -229,22 +229,22 @@ def info_page():
         - 2 Dosis: 4 Monate
         - 3 Dosis: 12 Monate
     - **Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 6 Monate
-        - 4. Dosis: 15-24 Monate
+        - 1 Dosis: 2 Monate
+        - 2 Dosis: 4 Monate
+        - 3 Dosis: 6 Monate
+        - 4 Dosis: 15-24 Monate
     - **Pneumokokken-Konjugat (PCV)**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 12 Monate
+        - 1 Dosis: 2 Monate
+        - 2 Dosis: 4 Monate
+        - 3 Dosis: 12 Monate
     - **Rotavirus**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
+        - 1 Dosis: 2 Monate
+        - 2 Dosis: 4 Monate
     - **Masern, Mumps, Röteln (MMR)**
-        - 1. Dosis: 12 Monate
-        - 2. Dosis: 15-24 Monate
+        - 1 Dosis: 12 Monate
+        - 2 Dosis: 15-24 Monate
     - **Varizellen (Windpocken)**
-        - 1. Dosis: 11-15 Jahre (wenn nicht zuvor immunisiert)
+        - 1 Dosis: 11-15 Jahre (wenn nicht zuvor immunisiert)
     """)
 
     # Jugendliche
