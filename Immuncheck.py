@@ -14,7 +14,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Anzeige der App
 st.markdown(
     """
     <h1 style='color: white;'>AgBi-Immuncheck - Digitaler Impfpass</h1>
@@ -23,7 +22,6 @@ st.markdown(
 )
 
 
-# Constants
 DATA_FILE = "Immucheck.csv"
 DATA_COLUMNS = ["username", "Datum der Impfung", "Impfstoff/Wirkstoff", "Symptome", "Nachimpfungsdatum"]
 
@@ -153,9 +151,9 @@ def initialize_login_information():
 def main_page():
     st.header("Willkommen zu AgBi-Immuncheck 💉")
     st.write("""
-    Unsere App AgBi- Immuncheck bietet eine benutzerfreundliche Plattform zur Erfassung und Verwaltung von Impfungen sowie zur Überwachung von Symptomen im Zusammenhang mit den Impfungen. Entwickelt für Einzelpersonen, ermöglicht unsere Anwendung eine einfache und sichere Verwaltung von Impfdaten und Gesundheitsinformationen.
+    Unsere App AgBi- Immuncheck bietet eine benutzerfreundliche Plattform zur Erfassung und Verwaltung von Impfungen sowie zur Überwachung von Symptomen im Zusammenhang mit den Impfungen. Entwickelt für Einzelpersonen, ermöglicht unsere Anwendung eine einfache und sichere Verwaltung von Impfdaten.
 
-    Benutzer können ihre Impfungen in der App erfassen, einschließlich des Impfstoffs, des Datums und des Impforts. Dies bietet eine zentrale und leicht zugängliche Aufzeichnung aller erhaltenen Impfungen. Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Informationen wie Name, Geburtsdatum und medizinische Vorgeschichte zu speichern. Dies ermöglicht eine individuelle Anpassung der Impf- und Gesundheitsverwaltung.
+    Benutzer können ihre Impfungen in der App erfassen, einschließlich des Impfstoffs und des Datums. Dies bietet eine zentrale und leicht zugängliche Aufzeichnung aller erhaltenen Impfungen. Die App ermöglicht es den Benutzern, Profile anzulegen und personenbezogene Informationen wie Name, Geburtsdatum und medizinische Vorgeschichte zu speichern. Dies ermöglicht eine individuelle Anpassung der Impf- und Gesundheitsverwaltung.
     """)
     st.write("Teilen Sie uns Ihre Erfahrungen mit!")
     
@@ -180,7 +178,6 @@ def profile_page():
     if 'profile' not in st.session_state:
         st.session_state.profile = {}
 
-    
     if st.session_state.github.file_exists(PROFILE_DATA_FILE):
         profile_df = st.session_state.github.read_df(PROFILE_DATA_FILE)
         profile_dict = profile_df.set_index('username').T.to_dict()
@@ -188,7 +185,6 @@ def profile_page():
     else:
         profile_df = pd.DataFrame(columns=DATA_COLUMNS_PROFILE)
 
-    
     if st.session_state.profile:
         st.subheader("Speichern")
         for key, value in st.session_state.profile.items():
@@ -225,8 +221,6 @@ def info_page():
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
 
 
-
-
 def main():
     initialize_github()
     initialize_login_information()
@@ -246,7 +240,7 @@ def main():
             "Startseite": main_page,
             "Profil": profile_page,
             "Impfungen": add_entry,
-            "Infos": info_page  # Hier fügen Sie Ihre neue Seite hinzu
+            "Weitere Informationen": info_page  # Hier fügen Sie Ihre neue Seite hinzu
         }
         st.sidebar.header("Menü")
         page = st.sidebar.selectbox("Wähle deine Seite", list(pages.keys()))
