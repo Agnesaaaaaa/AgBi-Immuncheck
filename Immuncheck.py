@@ -219,7 +219,7 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-    st.subheader("Standardimpfungen in der Schweiz")
+       st.subheader("Standardimpfungen in der Schweiz")
 
     # Define the data for the table
     data = {
@@ -237,43 +237,6 @@ def info_page():
 
     # Create a DataFrame from the data
     df = pd.DataFrame(data)
-
-    # Display the DataFrame with custom CSS styles
-    st.markdown(
-        """
-        <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            font-size: 16px;
-            padding: 12px 8px;
-            text-align: left;
-        }
-        td {
-            font-size: 14px;
-            padding: 10px 8px;
-            border-bottom: 1px solid #f2f2f2;
-            background-color: #f9f9f9;
-        }
-        td:first-child {
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-        }
-        td:last-child {
-            border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     # Display the DataFrame as a table
     st.table(df)
