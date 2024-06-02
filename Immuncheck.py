@@ -225,12 +225,12 @@ def info_page():
     data = {
         "Gruppe": ["Säuglinge und Kinder", "Jugendliche", "Erwachsene", "Senioren (ab 65 Jahren)", "Spezifische Gruppen", "Bestimmte Gesundheitszustände", "Weitere Empfehlungen"],
         "Impfungen": [
-            "Hepatitis B, Diphtherie, Tetanus, Pertussis, Haemophilus influenzae Typ b, Poliomyelitis, Pneumokokken-Konjugat, Rotavirus, Masern, Mumps, Röteln, Varizellen",
-            "Humanes Papillomavirus, Diphtherie, Tetanus, Pertussis",
-            "Diphtherie, Tetanus, Pertussis, Grippe (jährlich), Pneumokokken",
-            "Grippe (jährlich), Pneumokokken",
-            "Schwangere: Grippe, Tdap während jeder Schwangerschaft; Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
-            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B; Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
+            "Hepatitis B (3 Dosen, im Abstand von 0, 1 und 6 Monaten), Diphtherie (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Tetanus (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Pertussis (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Haemophilus influenzae Typ b (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Poliomyelitis (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Pneumokokken-Konjugat (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Rotavirus (2 oder 3 Dosen, im Abstand von 2 Monaten), Masern, Mumps, Röteln (2 Dosen, im Abstand von 12 Monaten), Varizellen (2 Dosen, im Abstand von 12 Monaten)",
+            "Humanes Papillomavirus (2 Dosen, im Abstand von 6 Monaten), Diphtherie (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Tetanus (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Pertussis (3 Dosen, im Abstand von 2, 4 und 15 Monaten)",
+            "Diphtherie (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Tetanus (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Pertussis (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
+            "Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
+            "Schwangere: Grippe (1 Dosis pro Schwangerschaft), Tdap während jeder Schwangerschaft; Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
+            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken (alle 10 Jahre), Influenza (jährlich), Hepatitis B (3 Dosen, im Abstand von 0, 1 und 6 Monaten); Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
             "Regelmäßige Überprüfung des Impfstatus; Beratung durch Fachpersonal für individuelle Impfempfehlungen"
         ]
     }
