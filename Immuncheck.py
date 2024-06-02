@@ -219,18 +219,18 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-    st.subheader("Standardimpfungen in der Schweiz")
+    t.subheader("Standardimpfungen in der Schweiz")
 
     # Define the data for the table
     data = {
         "Gruppe": ["Säuglinge und Kinder", "Jugendliche", "Erwachsene", "Senioren (ab 65 Jahren)", "Spezifische Gruppen", "Bestimmte Gesundheitszustände", "Weitere Empfehlungen"],
         "Impfungen": [
-            "Hepatitis B (3 Dosen, im Abstand von 0, 1 und 6 Monaten), Diphtherie (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Tetanus (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Pertussis (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Haemophilus influenzae Typ b (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Poliomyelitis (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Pneumokokken-Konjugat (4 Dosen, im Abstand von 2, 4, 6 und 15 Monaten), Rotavirus (2 oder 3 Dosen, im Abstand von 2 Monaten), Masern, Mumps, Röteln (2 Dosen, im Abstand von 12 Monaten), Varizellen (2 Dosen, im Abstand von 12 Monaten)",
-            "Humanes Papillomavirus (2 Dosen, im Abstand von 6 Monaten), Diphtherie (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Tetanus (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Pertussis (3 Dosen, im Abstand von 2, 4 und 15 Monaten)",
-            "Diphtherie (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Tetanus (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Pertussis (3 Dosen, im Abstand von 2, 4 und 15 Monaten), Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
+            "Hepatitis B (3 Dosen), Diphtherie (4 Dosen), Tetanus (4 Dosen), Pertussis (4 Dosen), Haemophilus influenzae Typ b (4 Dosen), Poliomyelitis (4 Dosen), Pneumokokken-Konjugat (4 Dosen), Rotavirus (2 oder 3 Dosen), Masern, Mumps, Röteln (2 Dosen), Varizellen (2 Dosen)",
+            "Humanes Papillomavirus (2 Dosen), Diphtherie (3 Dosen), Tetanus (3 Dosen), Pertussis (3 Dosen)",
+            "Diphtherie (3 Dosen), Tetanus (3 Dosen), Pertussis (3 Dosen), Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
             "Grippe (jährlich), Pneumokokken (alle 10 Jahre)",
             "Schwangere: Grippe (1 Dosis pro Schwangerschaft), Tdap während jeder Schwangerschaft; Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
-            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken (alle 10 Jahre), Influenza (jährlich), Hepatitis B (3 Dosen, im Abstand von 0, 1 und 6 Monaten); Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
+            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken (alle 10 Jahre), Influenza (jährlich), Hepatitis B (3 Dosen); Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
             "Regelmäßige Überprüfung des Impfstatus; Beratung durch Fachpersonal für individuelle Impfempfehlungen"
         ]
     }
@@ -238,8 +238,15 @@ def info_page():
     # Create a DataFrame from the data
     df = pd.DataFrame(data)
 
-    # Display the DataFrame as a table
-    st.dataframe(df)
+    # Custom styling for the DataFrame
+    styles = {
+        "Gruppe": {"background-color": "#f2f2f2", "color": "black", "font-weight": "bold", "text-align": "center"},
+        "Impfungen": {"background-color": "#e6f7ff", "color": "black", "text-align": "left"}
+    }
+
+    # Display the DataFrame with custom styling
+    st.table(df.style.set_properties(**styles).hide_index())
+
 
 
 
