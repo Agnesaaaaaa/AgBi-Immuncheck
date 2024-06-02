@@ -295,8 +295,7 @@ def info_page():
     - **Beratung durch Fachpersonal**: Für individuelle Impfempfehlungen sollte man sich stets mit einem Arzt oder einer Ärztin beraten, da die Impfempfehlungen sich ändern können
     """)
 
-if __name__ == "__main__":
-    info_page()
+
 
 
 def main():
