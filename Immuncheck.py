@@ -260,11 +260,11 @@ def info_page():
     st.markdown("""
     ### Erwachsene
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
-        - Auffrischungsimpfung: alle 20 Jahre
+         Auffrischungsimpfung: alle 20 Jahre
     - **Grippe (jährlich)**
-        - Besonders empfohlen für Personen über 65 Jahre und Personen mit chronischen Krankheiten
+         Besonders empfohlen für Personen über 65 Jahre und Personen mit chronischen Krankheiten
     - **Pneumokokken**
-        - Besonders empfohlen für Personen über 65 Jahre und Personen mit bestimmten chronischen Krankheiten
+        Besonders empfohlen für Personen über 65 Jahre und Personen mit bestimmten chronischen Krankheiten
     """)
 
     # Senioren (ab 65 Jahren)
