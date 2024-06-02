@@ -219,64 +219,27 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-
-st.subheader("Standardimpfungen in der Schweiz")
+    st.subheader("Standardimpfungen in der Schweiz")
 
     # Define the data for the table
-    table_data = {
+    data = {
         "Gruppe": ["Säuglinge und Kinder", "Jugendliche", "Erwachsene", "Senioren (ab 65 Jahren)", "Spezifische Gruppen", "Bestimmte Gesundheitszustände", "Weitere Empfehlungen"],
         "Impfungen": [
-            "- Hepatitis B\n- Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)\n- Pneumokokken-Konjugat (PCV)\n- Rotavirus\n- Masern, Mumps, Röteln (MMR)\n- Varizellen (Windpocken)",
-            "- Humanes Papillomavirus (HPV)\n- Diphtherie, Tetanus, Pertussis (Tdap)",
-            "- Diphtherie, Tetanus, Pertussis (Tdap)\n- Grippe (jährlich)\n- Pneumokokken",
-            "- Grippe (jährlich)\n- Pneumokokken",
-            "- Schwangere: Grippe und Tdap während jeder Schwangerschaft\n- Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
-            "- Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B\n- Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert",
-            "- Regelmäßige Überprüfung des Impfstatus\n- Beratung durch Fachpersonal für individuelle Impfempfehlungen"
+            "Hepatitis B, Diphtherie, Tetanus, Pertussis, Haemophilus influenzae Typ b, Poliomyelitis, Pneumokokken-Konjugat, Rotavirus, Masern, Mumps, Röteln, Varizellen",
+            "Humanes Papillomavirus, Diphtherie, Tetanus, Pertussis",
+            "Diphtherie, Tetanus, Pertussis, Grippe (jährlich), Pneumokokken",
+            "Grippe (jährlich), Pneumokokken",
+            "Schwangere: Grippe, Tdap während jeder Schwangerschaft; Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
+            "Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B; Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein",
+            "Regelmäßige Überprüfung des Impfstatus; Beratung durch Fachpersonal für individuelle Impfempfehlungen"
         ]
     }
 
-    # Create the HTML table
-    table_html = """
-    <style>
-    table {
-        font-family: Arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+    # Create a DataFrame from the data
+    df = pd.DataFrame(data)
 
-    th {
-        background-color: #f2f2f2;
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    </style>
-    <table>
-        <tr>
-            <th>Gruppe</th>
-            <th>Impfungen</th>
-        </tr>
-    """
-
-    for group, vaccines in zip(table_data["Gruppe"], table_data["Impfungen"]):
-        table_html += f"""
-        <tr>
-            <td>{group}</td>
-            <td>{vaccines}</td>
-        </tr>
-        """
-
-    table_html += "</table>"
-
-    # Display the HTML table
-    st.write(table_html, unsafe_allow_html=True)
+    # Display the DataFrame as a table
+    st.dataframe(df)
 
 
 
