@@ -219,7 +219,7 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-       st.subheader("Standardimpfungen in der Schweiz")
+    st.subheader("Standardimpfungen in der Schweiz")
 
     # Define the data for the table
     data = {
