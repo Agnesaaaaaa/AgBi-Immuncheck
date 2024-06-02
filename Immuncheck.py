@@ -219,82 +219,64 @@ def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
-    st.subheader("Standardimpfungen in der Schweiz")
 
-    # Säuglinge und Kinder
-    st.markdown("""
-    ### Säuglinge und Kinder
-    - **Hepatitis B**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 12 Monate
-    - **Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 6 Monate
-        - 4. Dosis: 15-24 Monate
-    - **Pneumokokken-Konjugat (PCV)**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 12 Monate
-    - **Rotavirus**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-    - **Masern, Mumps, Röteln (MMR)**
-        - 1. Dosis: 12 Monate
-        - 2. Dosis: 15-24 Monate
-    - **Varizellen (Windpocken)**
-        - 1. Dosis: 11-15 Jahre (wenn nicht zuvor immunisiert)
-    """)
+st.subheader("Standardimpfungen in der Schweiz")
 
-    # Jugendliche
-    st.markdown("""
-    ### Jugendliche
-    - **Humanes Papillomavirus (HPV)**
-        - Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
-    - **Diphtherie, Tetanus, Pertussis (Tdap)**
-        - Auffrischungsimpfung: 11-15 Jahre
-    """)
+    # Define the data for the table
+    table_data = {
+        "Gruppe": ["Säuglinge und Kinder", "Jugendliche", "Erwachsene", "Senioren (ab 65 Jahren)", "Spezifische Gruppen", "Bestimmte Gesundheitszustände", "Weitere Empfehlungen"],
+        "Impfungen": [
+            "- Hepatitis B\n- Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)\n- Pneumokokken-Konjugat (PCV)\n- Rotavirus\n- Masern, Mumps, Röteln (MMR)\n- Varizellen (Windpocken)",
+            "- Humanes Papillomavirus (HPV)\n- Diphtherie, Tetanus, Pertussis (Tdap)",
+            "- Diphtherie, Tetanus, Pertussis (Tdap)\n- Grippe (jährlich)\n- Pneumokokken",
+            "- Grippe (jährlich)\n- Pneumokokken",
+            "- Schwangere: Grippe und Tdap während jeder Schwangerschaft\n- Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein",
+            "- Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B\n- Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert",
+            "- Regelmäßige Überprüfung des Impfstatus\n- Beratung durch Fachpersonal für individuelle Impfempfehlungen"
+        ]
+    }
 
-    # Erwachsene
-    st.markdown("""
-    ### Erwachsene
-    - **Diphtherie, Tetanus, Pertussis (Tdap)**
-        - Auffrischungsimpfung: alle 20 Jahre
-    - **Grippe (jährlich)**
-        - Besonders empfohlen für Personen über 65 Jahre und Personen mit chronischen Krankheiten
-    - **Pneumokokken**
-        - Besonders empfohlen für Personen über 65 Jahre und Personen mit bestimmten chronischen Krankheiten
-    """)
+    # Create the HTML table
+    table_html = """
+    <style>
+    table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-    # Senioren (ab 65 Jahren)
-    st.markdown("""
-    ### Senioren (ab 65 Jahren)
-    - Grippe (jährlich)
-    - Pneumokokken
-    """)
+    th {
+        background-color: #f2f2f2;
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
 
-    # Spezifische Gruppen
-    st.markdown("""
-    ### Spezifische Gruppen
-    - **Schwangere**: Grippe und Tdap während jeder Schwangerschaft
-    - **Reisende**: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein (z.B. Gelbfieber, Typhus, Hepatitis A und B, Tollwut, Japanische Enzephalitis)
-    """)
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    </style>
+    <table>
+        <tr>
+            <th>Gruppe</th>
+            <th>Impfungen</th>
+        </tr>
+    """
 
-    # Impfungen für bestimmte Gesundheitszustände
-    st.markdown("""
-    ### Impfungen für bestimmte Gesundheitszustände
-    - **Chronische Erkrankungen** (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B
-    - **Geschwächtes Immunsystem**: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert
-    """)
+    for group, vaccines in zip(table_data["Gruppe"], table_data["Impfungen"]):
+        table_html += f"""
+        <tr>
+            <td>{group}</td>
+            <td>{vaccines}</td>
+        </tr>
+        """
 
-    # Weitere Empfehlungen
-    st.markdown("""
-    ### Weitere Empfehlungen
-    - **Regelmäßige Überprüfung des Impfstatus**: Impfstatus regelmäßig überprüfen und Auffrischungsimpfungen nach Bedarf durchführen
-    - **Beratung durch Fachpersonal**: Für individuelle Impfempfehlungen sollte man sich stets mit einem Arzt oder einer Ärztin beraten, da die Impfempfehlungen sich ändern können
-    """)
+    table_html += "</table>"
 
+    # Display the HTML table
+    st.write(table_html, unsafe_allow_html=True)
 
 
 
