@@ -251,9 +251,9 @@ def info_page():
     st.markdown("""
     ###  Jugendliche
     - **Humanes Papillomavirus (HPV)**
-        - Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
+        Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
-        - Auffrischungsimpfung: 11-15 Jahre
+        Auffrischungsimpfung: 11-15 Jahre
     """)
 
     # Erwachsene
