@@ -225,9 +225,9 @@ def info_page():
     st.markdown("""
     ### Säuglinge und Kinder
     - **Hepatitis B**
-        - 1. Dosis: 2 Monate
-        - 2. Dosis: 4 Monate
-        - 3. Dosis: 12 Monate
+        - 1 Dosis: 2 Monate
+        - 2 Dosis: 4 Monate
+        - 3 Dosis: 12 Monate
     - **Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)**
         - 1. Dosis: 2 Monate
         - 2. Dosis: 4 Monate
