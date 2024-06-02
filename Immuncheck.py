@@ -249,7 +249,7 @@ def info_page():
 
     # Jugendliche
     st.markdown("""
-    ### Jugendliche
+    ## Jugendliche
     - **Humanes Papillomavirus (HPV)**
         - Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
@@ -258,7 +258,7 @@ def info_page():
 
     # Erwachsene
     st.markdown("""
-    ### Erwachsene
+    ## Erwachsene
     - **Diphtherie, Tetanus, Pertussis (Tdap)**
         - Auffrischungsimpfung: alle 20 Jahre
     - **Grippe (jährlich)**
@@ -283,19 +283,17 @@ def info_page():
 
     # Impfungen für bestimmte Gesundheitszustände
     st.markdown("""
-    ### Impfungen für bestimmte Gesundheitszustände
+    ## Impfungen für bestimmte Gesundheitszustände
     - **Chronische Erkrankungen** (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B
     - **Geschwächtes Immunsystem**: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert
     """)
 
     # Weitere Empfehlungen
     st.markdown("""
-    ### Weitere Empfehlungen
+    ## Weitere Empfehlungen
     - **Regelmäßige Überprüfung des Impfstatus**: Impfstatus regelmäßig überprüfen und Auffrischungsimpfungen nach Bedarf durchführen
     - **Beratung durch Fachpersonal**: Für individuelle Impfempfehlungen sollte man sich stets mit einem Arzt oder einer Ärztin beraten, da die Impfempfehlungen sich ändern können
     """)
-
-
 
 def main():
     initialize_github()
