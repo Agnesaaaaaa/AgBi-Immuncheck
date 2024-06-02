@@ -218,6 +218,120 @@ def profile_page():
 def info_page():
     st.header("Informationsplattform 🔍")
     st.write("Mehr Informationen zu Impfstoffen finden Sie [hier](https://www.infovac.ch/de/impfungen/impfstoffe-nach-krankheiten-geordnet).")
+    <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impfempfehlungen Schweiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Standardimpfungen in der Schweiz</h1>
+        <h2>Säuglinge und Kinder</h2>
+        <ul>
+            <li>Hepatitis B
+                <ul>
+                    <li>1. Dosis: 2 Monate</li>
+                    <li>2. Dosis: 4 Monate</li>
+                    <li>3. Dosis: 12 Monate</li>
+                </ul>
+            </li>
+            <li>Diphtherie, Tetanus, Pertussis (Keuchhusten), Haemophilus influenzae Typ b, Poliomyelitis (DTPa-Hib-IPV)
+                <ul>
+                    <li>1. Dosis: 2 Monate</li>
+                    <li>2. Dosis: 4 Monate</li>
+                    <li>3. Dosis: 6 Monate</li>
+                    <li>4. Dosis: 15-24 Monate</li>
+                </ul>
+            </li>
+            <li>Pneumokokken-Konjugat (PCV)
+                <ul>
+                    <li>1. Dosis: 2 Monate</li>
+                    <li>2. Dosis: 4 Monate</li>
+                    <li>3. Dosis: 12 Monate</li>
+                </ul>
+            </li>
+            <li>Rotavirus
+                <ul>
+                    <li>1. Dosis: 2 Monate</li>
+                    <li>2. Dosis: 4 Monate</li>
+                </ul>
+            </li>
+            <li>Masern, Mumps, Röteln (MMR)
+                <ul>
+                    <li>1. Dosis: 12 Monate</li>
+                    <li>2. Dosis: 15-24 Monate</li>
+                </ul>
+            </li>
+            <li>Varizellen (Windpocken)
+                <ul>
+                    <li>1. Dosis: 11-15 Jahre (wenn nicht zuvor immunisiert)</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Jugendliche</h2>
+        <ul>
+            <li>Humanes Papillomavirus (HPV)
+                <ul>
+                    <li>Mädchen und Jungen: 11-14 Jahre (zwei Dosen im Abstand von 6 Monaten)</li>
+                </ul>
+            </li>
+            <li>Diphtherie, Tetanus, Pertussis (Tdap)
+                <ul>
+                    <li>Auffrischungsimpfung: 11-15 Jahre</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Erwachsene</h2>
+        <ul>
+            <li>Diphtherie, Tetanus, Pertussis (Tdap)
+                <ul>
+                    <li>Auffrischungsimpfung: alle 20 Jahre</li>
+                </ul>
+            </li>
+            <li>Grippe (jährlich)
+                <ul>
+                    <li>Besonders empfohlen für Personen über 65 Jahre und Personen mit chronischen Krankheiten</li>
+                </ul>
+            </li>
+            <li>Pneumokokken
+                <ul>
+                    <li>Besonders empfohlen für Personen über 65 Jahre und Personen mit bestimmten chronischen Krankheiten</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Senioren (ab 65 Jahren)</h2>
+        <ul>
+            <li>Grippe (jährlich)</li>
+            <li>Pneumokokken</li>
+        </ul>
+
+        <h2>Spezifische Gruppen</h2>
+        <ul>
+            <li>Schwangere: Grippe und Tdap während jeder Schwangerschaft</li>
+            <li>Reisende: Je nach Reiseziel können zusätzliche Impfungen erforderlich sein (z.B. Gelbfieber, Typhus, Hepatitis A und B, Tollwut, Japanische Enzephalitis)</li>
+        </ul>
+
+        <h2>Impfungen für bestimmte Gesundheitszustände</h2>
+        <ul>
+            <li>Chronische Erkrankungen (z.B. Diabetes, Herzkrankheiten, Lungenerkrankungen): Pneumokokken, Influenza, Hepatitis B</li>
+            <li>Geschwächtes Immunsystem: Zusätzliche Impfungen können erforderlich sein, jedoch sind Lebendimpfstoffe möglicherweise kontraindiziert</li>
+        </ul>
+
+        <h2>Weitere Empfehlungen</h2>
+        <ul>
+            <li>Regelmäßige Überprüfung des Impfstatus: Impfstatus regelmäßig überprüfen und Auffrischungsimpfungen nach Bedarf durchführen</li>
+            <li>Beratung durch Fachpersonal: Für individuelle Impfempfehlungen sollte man sich stets mit einem Arzt oder einer Ärztin beraten, da die Impfempfehlungen sich ändern können</li>
+        </ul>
+    </div>
+</body>
+</html>
+
     st.image('Impf.jpg', caption='Schweizerischer Impfplan')
 
 
